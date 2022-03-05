@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Using Promises</title>
+    </head>
+    <body>
+        <!--Using promise function-->
+        <h1>Enter a number from 1 tp 10</h1>
+        <input type = "number" id="inputdata" placeholder="Number">
+        <button onclick="myFunction()">Click the button</button>
+        <p id = "answer"></p>
+
+        <!--Using Async functions and await classes-->
+       <button onclick = "result()"> Click the button </button>
+        <h1 id = "answer1"></p>
+        <script>
+            function myDisplayer(some) {
+                document.getElementById("answer").innerHTML = some;
+              }
+            function myFunction()
+          
+            {
+                var num = document.getElementById('inputdata').value;
+                let myPromise = new Promise(function(resolve,reject)
+                {
+                    if (num>=1 && num <= 10)
+                    {
+                        resolve("You read the instructions!");
+                    }else{
+                        reject(Error("Read the instructions again!"));
+                    }
+                });
+                myPromise.then(
+                function(value) {myDisplayer(value);},
+                function(error) {myDisplayer(error);}
+                );
+            }
+        </script>
+             
+        <script>
+             async function result(){
+                 let ans = new Promise(function(resolve){
+                    resolve("Yay! You clicked the button!");
+                 });
+                 document.getElementById("answer1").innerHTML = await ans;
+             }
+        </script>
+    </body>
+</html>
