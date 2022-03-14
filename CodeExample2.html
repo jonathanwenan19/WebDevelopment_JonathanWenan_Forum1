@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Using the fetch function</title>
+    </head>
+    <body>
+        <p>Fetch function can also be used for fetching images from the internet through blob()</p>
+        <img src = "" id = "student"/>
+        <!--Using the fetch function-->
+        <script>
+            console.log("About to do stuff")
+            fetch("https://cdn.pixabay.com/photo/2020/12/27/20/24/smile-5865208_960_720.png").then(response=>
+            {
+                console.log(response);
+                return response.blob();
+            })
+            .then(image=>{
+                console.log(image);
+                document.getElementById('student').src = URL.createObjectURL(image);
+            });
+      
+        </script>
+    </body>
+</html>
